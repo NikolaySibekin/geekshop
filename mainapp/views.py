@@ -1,11 +1,14 @@
 from django.shortcuts import render
 
+
 def main(request):
-    return render(request, 'main.html')
+    return render(request, 'mainapp/main.html')
+
 
 def products(request):
-    return render(request, 'products.html')
+    context = {'username': None, 'products': ['Люстра', 'Бра']}
+    return render(request, 'mainapp/products.html', context=context)
+
 
 def contacts(request):
-    return render(request, 'contacts.html')
-
+    return render(request, 'mainapp/contacts.html')
