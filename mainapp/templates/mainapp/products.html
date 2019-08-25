@@ -5,16 +5,33 @@
 {% endblock %}
 
 {% block content %}
-    <div style="margin-top: 20px; font-size: 40px">
-        {% if username %}
-            Привет, {{ username|title }}!
-        {% else %}
-            Привет!
-        {% endif %}
-    </div>
-    <h1>Вот твои продукты: </h1>
-    {% for product in products %}
-        <image src="/media/{{ product.image.url }}" />
-        <div style="font-size: 30px">{{ product }}</div>
-    {% endfor %}
+   <div class="details-products">
+       <div class="details-slider">
+           <div class="slider-product">
+              <img src="/media/{{ hot_product.image }}">
+           </div>
+           <div class="slider-control">
+              <div class="block">
+                <a href="#"><img src="/media/{{ hot_product.image }}" alt=""></a>
+              </div>
+              <div class="block">
+                <a href="#"><img src="/media/{{ hot_product.image }}" alt=""></a>
+              </div>
+              <div class="block">
+                <a href="#"><img src="/media/{{ hot_product.image }}" alt=""></a>
+              </div>
+           </div>
+       </div>
+       <div class="description">
+           <h3 class="big-bold">{{ hot_product.name }}</h3>
+           <h3 class="red">Горячее предложение</h3>
+           <p class="price">{{ hot_product.price }} <span>руб.</span></p>
+           <a href="{% url 'basket:add' hot_product.pk %}" class="red-button">
+              заказать <i class="fa fa-chevron-right" aria-hidden="true"></i>
+           </a>
+           <div class="description-text">
+              {{ hot_product.description }}
+           </div>
+       </div>
+   </div>
 {% endblock %}
